@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelo de Datos Cassandra - Finca Ganadera</title>
+</head>
+<body>
+  
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+    }
+    .cluster {
+      border: 2px solid #aaa;
+      background: #ddd;
+      padding: 20px;
+      margin: 30px auto;
+      width: 95%;
+    }
+    .cluster h1 {
+      margin-bottom: 20px;
+    }
+    .keyspace {
+      background: #b3e5fc;
+      padding: 15px;
+      margin: 10px auto;
+      width: 90%;
+      border-radius: 8px;
+    }
+    .keyspace h2 {
+      margin-top: 0;
+    }
+    .column-family {
+      background: #82b1ff;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+    }
+    .column-family h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: #fff;
+    }
+    .row {
+      background: #ffecb3;
+      margin: 4px auto;
+      padding: 6px;
+      width: 90%;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cluster">
+    <h1>Cassandra Data Model - Finca Ganadera</h1>
+    <div class="keyspace">
+      <h2>Keyspace: FincaGanadera</h2>
+
+      <div class="column-family">
+        <h3>GANADO</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Codigo</div>
+        <div class="row">Raza</div>
+        <div class="row">Fecha_Nacimiento</div>
+        <div class="row">Sexo</div>
+      </div>
+
+      <div class="column-family">
+        <h3>HISTORIAL_PESO</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha_Peso</div>
+        <div class="row">Peso</div>
+      </div>
+
+      <div class="column-family">
+        <h3>REPRODUCCION</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Padre</div>
+        <div class="row">Madre</div>
+      </div>
+
+      <div class="column-family">
+        <h3>ALIMENTACION</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Tipo_Alimento</div>
+        <div class="row">Cantidad</div>
+        <div class="row">Frecuencia</div>
+      </div>
+
+      <div class="column-family">
+        <h3>PRODUCCION_LECHE</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Hora</div>
+        <div class="row">Cantidad</div>
+        <div class="row">Calidad</div>
+      </div>
+
+      <div class="column-family">
+        <h3>SACRIFICIOS</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Peso_Canal</div>
+      </div>
+
+      <div class="column-family">
+        <h3>DESPIECE / CORTES</h3>
+        <div class="row">ID_Despiece</div>
+        <div class="row">Proceso</div>
+        <div class="row">Tipo_Corte</div>
+        <div class="row">Peso</div>
+      </div>
+
+      <div class="column-family">
+        <h3>VISITAS_VETERINARIAS</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Veterinario</div>
+      </div>
+
+      <div class="column-family">
+        <h3>DIAGNOSTICOS</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Diagnostico</div>
+      </div>
+
+      <div class="column-family">
+        <h3>TRATAMIENTOS</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Medicamento</div>
+        <div class="row">Dosis</div>
+      </div>
+
+      <div class="column-family">
+        <h3>VACUNAS</h3>
+        <div class="row">ID_Animal</div>
+        <div class="row">Fecha</div>
+        <div class="row">Tipo_Vacuna</div>
+      </div>
+
+      <div class="column-family">
+        <h3>VENTAS</h3>
+        <div class="row">ID_Venta</div>
+        <div class="row">Fecha</div>
+        <div class="row">Hora</div>
+        <div class="row">ID_Cliente</div>
+        <div class="row">Forma_Pago</div>
+      </div>
+
+      <div class="column-family">
+        <h3>DETALLE_VENTA</h3>
+        <div class="row">ID_Venta</div>
+        <div class="row">ID_Producto</div>
+        <div class="row">Cantidad</div>
+        <div class="row">Precio_Unitario</div>
+      </div>
+
+      <div class="column-family">
+        <h3>CLIENTES</h3>
+        <div class="row">ID_Cliente</div>
+        <div class="row">Nombre</div>
+        <div class="row">Telefono</div>
+        <div class="row">Email</div>
+      </div>
+
+      <div class="column-family">
+        <h3>USUARIOS / ROLES</h3>
+        <div class="row">ID_Usuario</div>
+        <div class="row">Usuario</div>
+        <div class="row">Nombre</div>
+        <div class="row">Rol</div>
+      </div>
+
+      <div class="column-family">
+        <h3>RESERVAS</h3>
+        <div class="row">ID_Reserva</div>
+        <div class="row">ID_Cliente</div>
+        <div class="row">ID_Actividad</div>
+        <div class="row">Fecha</div>
+        <div class="row">Cantidad_Personas</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
